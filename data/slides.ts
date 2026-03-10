@@ -21,7 +21,7 @@ export const slides: SlideContent[] = [
     subtitle: "AI Agents, Automations & New Workflows",
     icon: 'Sparkles',
     layout: 'title',
-    points: ['3-Hour Interactive Session']
+    points: ['By Keertan Vijaykumar']
   },
   {
     id: 2,
