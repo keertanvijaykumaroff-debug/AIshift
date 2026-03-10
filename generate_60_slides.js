@@ -1,4 +1,6 @@
+const fs = require('fs');
 
+const fileContent = `
 export interface SlideContent {
   id: number;
   title: string;
@@ -676,3 +678,7 @@ export const slides: SlideContent[] = [
     ]
   }
 ];
+`;
+
+fs.writeFileSync('c:/Users/keert/Downloads/b_NM206Jdkp02-1773151280151/data/slides.ts', fileContent);
+console.log('Slides successfully updated to 77 counts.');

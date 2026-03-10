@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { slides } from '@/data/slides';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(1);
@@ -11,18 +12,20 @@ export default function Home() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!containerRef.current) return;
-      const { scrollTop, clientHeight } = containerRef.current;
-      const currentIndex = Math.round(scrollTop / clientHeight);
+
+      const el = containerRef.current;
+      const clientHeight = el.clientHeight;
+      const currentIndex = Math.round(el.scrollTop / clientHeight);
 
       if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
         e.preventDefault();
-        containerRef.current.scrollTo({
+        el.scrollTo({
           top: (currentIndex + 1) * clientHeight,
           behavior: 'smooth'
         });
       } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
         e.preventDefault();
-        containerRef.current.scrollTo({
+        el.scrollTo({
           top: Math.max(0, currentIndex - 1) * clientHeight,
           behavior: 'smooth'
         });
@@ -35,8 +38,6 @@ export default function Home() {
   const handleScroll = () => {
     if (!containerRef.current) return;
     const { scrollTop, clientHeight } = containerRef.current;
-
-    // Safety check to avoid zero division during resize
     if (clientHeight === 0) return;
 
     const currentIndex = Math.round(scrollTop / clientHeight);
@@ -44,25 +45,29 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen w-full bg-slate-950 overflow-hidden flex flex-col items-center justify-center p-2 sm:p-4">
-      {/* Slide Container - 16:9 Aspect Ratio within screen bounds */}
+    <div className="h-screen w-full bg-slate-50 overflow-hidden flex flex-col items-center justify-center p-2 sm:p-4">
+      {/* 
+        Slide Container 
+        Expanded to max width and nearly full height (max-w-[95vw] h-[90vh])
+        while retaining the snap logic.
+      */}
       <div
         ref={containerRef}
         onScroll={handleScroll}
-        className="w-full max-w-7xl aspect-video bg-white shadow-2xl rounded-xl overflow-y-auto snap-y snap-mandatory relative scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        className="w-full h-full max-w-[95vw] sm:max-w-7xl max-h-[90vh] bg-white shadow-[0_8px_30px_rgb(0,0,0,0.06)] ring-1 ring-slate-900/5 rounded-2xl overflow-y-auto snap-y snap-mandatory relative scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className="w-full h-full snap-start snap-always shrink-0 flex flex-col p-10 sm:p-16 lg:p-24 relative bg-gradient-to-br from-slate-50 to-slate-100"
+            className="w-full h-full snap-start snap-always shrink-0 flex flex-col p-10 sm:p-14 lg:p-20 relative bg-white"
           >
             {/* Slide Header */}
-            <div className="mb-10 shrink-0">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            <div className="mb-8 shrink-0">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-800 tracking-tight leading-tight">
                 {slide.title}
               </h1>
               {slide.subtitle && (
-                <h2 className="text-xl sm:text-2xl lg:text-3xl text-primary mt-6 font-semibold opacity-90">
+                <h2 className="text-xl sm:text-2xl lg:text-3xl text-indigo-600 mt-4 font-semibold opacity-90">
                   {slide.subtitle}
                 </h2>
               )}
@@ -72,7 +77,7 @@ export default function Home() {
             <div className="flex-1 flex flex-col justify-center overflow-hidden">
               {slide.layout === 'title' && slide.points && (
                 <div className="text-center mt-auto mb-auto">
-                  <p className="text-2xl sm:text-3xl lg:text-4xl text-slate-600 font-medium pb-12">
+                  <p className="text-2xl sm:text-3xl lg:text-4xl text-slate-500 font-medium pb-12">
                     {slide.points[0]}
                   </p>
                 </div>
@@ -82,8 +87,8 @@ export default function Home() {
                 <ul className="space-y-6 sm:space-y-8 max-w-5xl">
                   {slide.points.map((point, i) => (
                     <li key={i} className="flex items-start gap-5">
-                      <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-primary mt-2 sm:mt-3 shrink-0"></span>
-                      <span className="text-xl sm:text-2xl lg:text-3xl text-slate-800 leading-relaxed font-medium">
+                      <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-indigo-500 mt-2 sm:mt-3 shrink-0"></span>
+                      <span className="text-2xl lg:text-[2rem] text-slate-700 leading-tight font-medium">
                         {point}
                       </span>
                     </li>
@@ -94,8 +99,8 @@ export default function Home() {
               {slide.layout === 'split' && slide.points && (
                 <div className="grid md:grid-cols-2 gap-8 lg:gap-12 w-full max-w-6xl">
                   {slide.points.map((point, i) => (
-                    <div key={i} className="bg-white p-8 lg:p-10 rounded-2xl shadow-sm border border-slate-100 h-full flex items-center">
-                      <p className="text-xl sm:text-2xl lg:text-3xl text-slate-800 leading-relaxed font-medium">
+                    <div key={i} className="bg-slate-50 p-8 lg:p-10 rounded-2xl border border-slate-100 h-full flex items-center">
+                      <p className="text-2xl lg:text-[2rem] text-slate-700 leading-tight font-medium">
                         {point}
                       </p>
                     </div>
@@ -104,10 +109,48 @@ export default function Home() {
               )}
 
               {slide.layout === 'quote' && slide.points && (
-                <div className="bg-primary/5 p-10 lg:p-16 rounded-3xl border-l-8 border-primary max-w-5xl">
-                  <p className="text-2xl sm:text-3xl lg:text-4xl text-slate-800 leading-relaxed italic font-serif">
+                <div className="bg-indigo-50/50 p-10 lg:p-16 rounded-3xl border-l-[6px] border-indigo-500 max-w-5xl">
+                  <p className="text-3xl lg:text-[2.5rem] text-slate-800 leading-snug italic font-serif">
                     "{slide.points[0]}"
                   </p>
+                </div>
+              )}
+
+              {/* Minimalist Bar Chart Integration */}
+              {slide.layout === 'bar-chart' && slide.chartData && (
+                <div className="h-full w-full max-h-[60vh] mt-4">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={slide.chartData} margin={{ top: 20, right: 30, left: 0, bottom: 20 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
+                      <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 16 }} dy={10} />
+                      <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 16 }} />
+                      <Tooltip
+                        cursor={{ fill: '#f1f5f9' }}
+                        contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                      />
+                      <Bar dataKey="adoption" fill="#6366f1" radius={[6, 6, 0, 0]} maxBarSize={80} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              )}
+
+              {/* Minimalist Stacked Bar Chart */}
+              {slide.layout === 'stacked-bar-chart' && slide.chartData && (
+                <div className="h-full w-full max-h-[60vh] mt-4">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={slide.chartData} layout="vertical" margin={{ top: 20, right: 30, left: 30, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#e2e8f0" />
+                      <XAxis type="number" hide />
+                      <YAxis dataKey="role" type="category" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 16 }} width={140} />
+                      <Tooltip
+                        cursor={{ fill: '#f1f5f9' }}
+                        contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                      />
+                      <Legend iconType="circle" wrapperStyle={{ paddingTop: '20px' }} />
+                      <Bar dataKey="replaced" stackId="a" fill="#94a3b8" name="Replaceable %" radius={[0, 0, 0, 0]} barSize={40} />
+                      <Bar dataKey="augmented" stackId="a" fill="#6366f1" name="Augmented %" radius={[0, 6, 6, 0]} barSize={40} />
+                    </BarChart>
+                  </ResponsiveContainer>
                 </div>
               )}
             </div>
@@ -118,9 +161,9 @@ export default function Home() {
             </div>
 
             {/* Progress indicator border */}
-            <div className="absolute top-0 left-0 w-full h-2 bg-slate-200">
+            <div className="absolute top-0 left-0 w-full h-[6px] bg-slate-100">
               <div
-                className="h-full bg-primary transition-all duration-300"
+                className="h-full bg-indigo-500 transition-all duration-300"
                 style={{ width: `${((index + 1) / slides.length) * 100}%` }}
               />
             </div>
@@ -129,25 +172,25 @@ export default function Home() {
       </div>
 
       {/* Presentation Controls */}
-      <div className="mt-6 sm:mt-8 flex gap-4 sm:gap-6 items-center bg-slate-900/50 p-3 sm:p-4 rounded-full backdrop-blur-md">
+      <div className="mt-4 sm:mt-6 flex gap-4 sm:gap-6 items-center bg-white shadow-md border border-slate-200 p-2 sm:p-3 rounded-full">
         <button
           onClick={() => containerRef.current?.scrollTo({ top: Math.max(0, currentSlide - 2) * containerRef.current.clientHeight, behavior: 'smooth' })}
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition filter backdrop-blur-md disabled:opacity-50"
+          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full hover:bg-slate-100 text-slate-700 flex items-center justify-center transition disabled:opacity-30 disabled:hover:bg-transparent"
           disabled={currentSlide === 1}
           aria-label="Previous Slide"
         >
-          ←
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
         </button>
-        <span className="text-slate-300 font-mono text-base sm:text-lg font-medium px-2 sm:px-4 shrink-0">
+        <span className="text-slate-500 font-mono text-base sm:text-lg px-2 sm:px-4 shrink-0">
           Slide {currentSlide} of {slides.length}
         </span>
         <button
           onClick={() => containerRef.current?.scrollTo({ top: currentSlide * containerRef.current.clientHeight, behavior: 'smooth' })}
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition filter backdrop-blur-md disabled:opacity-50"
+          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full hover:bg-slate-100 text-slate-700 flex items-center justify-center transition disabled:opacity-30 disabled:hover:bg-transparent"
           disabled={currentSlide === slides.length}
           aria-label="Next Slide"
         >
-          →
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
         </button>
       </div>
     </div>
