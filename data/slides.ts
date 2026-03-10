@@ -4,9 +4,15 @@ export interface SlideContent {
   title: string;
   subtitle?: string;
   points?: string[];
-  layout: 'title' | 'bullets' | 'split' | 'quote' | 'bar-chart' | 'stacked-bar-chart';
+    icon: 'Sparkles',
+  layout: 'title' | 'bullets' | 'split' | 'quote' | 'bar-chart' | 'stacked-bar-chart' | 'line-chart' | 'pie-chart';
   chartData?: any[];
+  chartConfig?: {
+    value1Name?: string;
+    value2Name?: string;
+  };
   extraContent?: any;
+  icon?: string;
 }
 
 export const slides: SlideContent[] = [
@@ -15,6 +21,7 @@ export const slides: SlideContent[] = [
     id: 1,
     title: "The AI Shift",
     subtitle: "Understanding Artificial Intelligence, Its Impact, and How to Prepare for the Future",
+    icon: 'Sparkles',
     layout: 'title',
     points: ['Keertan Vijaykumar']
   },
@@ -24,6 +31,7 @@ export const slides: SlideContent[] = [
     id: 2,
     title: "Understanding AI, ML, and Deep Learning",
     subtitle: "Establishing a baseline for the future",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "Before diving into the implications of artificial intelligence, let's establish a clear understanding of what these terms mean.",
@@ -33,6 +41,7 @@ export const slides: SlideContent[] = [
   {
     id: 3,
     title: "Artificial Intelligence (AI)",
+    icon: 'BrainCircuit',
     layout: 'bullets',
     points: [
       "The broad field of computer science",
@@ -43,6 +52,7 @@ export const slides: SlideContent[] = [
   {
     id: 4,
     title: "Machine Learning (ML)",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "A subset of Artificial Intelligence",
@@ -54,6 +64,7 @@ export const slides: SlideContent[] = [
   {
     id: 5,
     title: "Deep Learning",
+    icon: 'BrainCircuit',
     layout: 'bullets',
     points: [
       "A specialized subset of Machine Learning",
@@ -65,26 +76,44 @@ export const slides: SlideContent[] = [
   {
     id: 6,
     title: "Key Insight: The Hierarchy",
+    icon: 'Sparkles',
     layout: 'quote',
     points: [
       "These technologies build upon one another: All Deep Learning is Machine Learning, and all Machine Learning is AI. But not all AI is Deep Learning."
     ]
   },
 
-  // 7-13: Timeline
-  { id: 7, title: "Evolution Timeline: 1950", subtitle: "The Birth of AI", layout: 'bullets', points: ["Alan Turing proposes the 'Imitation Game' test for machine intelligence (The Turing Test).", "Forms the philosophical foundation of AI."] },
-  { id: 8, title: "Evolution Timeline: 1974-1980", subtitle: "First AI Winter", layout: 'bullets', points: ["Reduced funding and public interest.", "Caused by unmet expectations and early technological limitations in compute power."] },
-  { id: 9, title: "Evolution Timeline: 1997", subtitle: "Deep Blue", layout: 'bullets', points: ["IBM's Deep Blue defeats world chess champion Garry Kasparov.", "A major milestone in rule-based, game-playing AI."] },
-  { id: 10, title: "Evolution Timeline: 2012", subtitle: "Deep Learning Revolution", layout: 'bullets', points: ["AlexNet wins the ImageNet competition by a massive margin.", "Sparks a massive surge in deep learning research and GPU cloud investment."] },
-  { id: 11, title: "Evolution Timeline: 2016", subtitle: "AlphaGo Victory", layout: 'bullets', points: ["DeepMind's AlphaGo defeats world Go champion Lee Sedol.", "Mastering a game previously thought too complex for machines using Reinforcement Learning."] },
-  { id: 12, title: "Evolution Timeline: 2022-2024", subtitle: "Generative AI Boom", layout: 'bullets', points: ["ChatGPT, GPT-4, Claude, and other Large Language Models (LLMs) are released.", "Completely transforms the global AI landscape and public accessibility."] },
-  { id: 13, title: "Evolution Timeline: 2025-2026", subtitle: "AI Integration Era", layout: 'bullets', points: ["AI becomes deeply embedded in everyday tools.", "Enterprise workflows and applications across all industries adopt agentic AI."] },
+  // 7: Timeline visual
+  {
+    id: 7,
+    title: "Evolution of AI: Interest & Capability",
+    subtitle: "A visualization of AI's timeline",
+    icon: 'Clock',
+    layout: 'line-chart',
+    chartData: [
+      { name: '1950', value: 10 },
+      { name: '1974', value: 5 },
+      { name: '1997', value: 25 },
+      { name: '2012', value: 45 },
+      { name: '2016', value: 65 },
+      { name: '2024', value: 95 }
+    ]
+  },
+
+  // 8-13: Timeline text points
+  { id: 8, title: "Evolution Timeline: 1950", subtitle: "The Birth of AI", icon: 'Clock', layout: 'bullets', points: ["Alan Turing proposes the 'Imitation Game' test for machine intelligence (The Turing Test).", "Forms the philosophical foundation of AI."] },
+  { id: 9, title: "Evolution Timeline: 1974-1980", subtitle: "First AI Winter", icon: 'Clock', layout: 'bullets', points: ["Reduced funding and public interest.", "Caused by unmet expectations and early technological limitations in compute power."] },
+  { id: 10, title: "Evolution Timeline: 1997", subtitle: "Deep Blue", icon: 'Clock', layout: 'bullets', points: ["IBM's Deep Blue defeats world chess champion Garry Kasparov.", "A major milestone in rule-based, game-playing AI."] },
+  { id: 11, title: "Evolution Timeline: 2012", subtitle: "Deep Learning Revolution", icon: 'Clock', layout: 'bullets', points: ["AlexNet wins the ImageNet competition by a massive margin.", "Sparks a massive surge in deep learning research and GPU cloud investment."] },
+  { id: 12, title: "Evolution Timeline: 2016", subtitle: "AlphaGo Victory", icon: 'Clock', layout: 'bullets', points: ["DeepMind's AlphaGo defeats world Go champion Lee Sedol.", "Mastering a game previously thought too complex for machines using Reinforcement Learning."] },
+  { id: 13, title: "Evolution Timeline: 2022-2024", subtitle: "Generative AI Boom", icon: 'Clock', layout: 'bullets', points: ["ChatGPT, GPT-4, Claude, and other Large Language Models (LLMs) are released.", "Completely transforms the global AI landscape and public accessibility."] },
 
   // 14-19: Landscape
   {
     id: 14,
     title: "The AI Ecosystem Stack",
     subtitle: "How is AI built?",
+    icon: 'BrainCircuit',
     layout: 'bullets',
     points: [
       "The modern AI ecosystem is built on a massive stack of technologies.",
@@ -94,6 +123,7 @@ export const slides: SlideContent[] = [
   {
     id: 15,
     title: "Foundation & Data Layers",
+    icon: 'Database',
     layout: 'split',
     points: [
       "Foundation Layer: Computing Infrastructure (GPUs, TPUs, Cloud Computing grids). The hardware that makes models possible.",
@@ -103,6 +133,7 @@ export const slides: SlideContent[] = [
   {
     id: 16,
     title: "Algorithms & Deep Learning",
+    icon: 'BrainCircuit',
     layout: 'split',
     points: [
       "ML Algorithms: Supervised Learning, Unsupervised Learning, Reinforcement Learning strategies.",
@@ -112,6 +143,7 @@ export const slides: SlideContent[] = [
   {
     id: 17,
     title: "Applications Layer",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "The top of the stack is where users interact with AI.",
@@ -121,6 +153,7 @@ export const slides: SlideContent[] = [
   {
     id: 18,
     title: "Horizontal Applications",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "General-purpose tools used broadly across all industries.",
@@ -131,6 +164,7 @@ export const slides: SlideContent[] = [
   {
     id: 19,
     title: "Vertical Applications",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "Industry-specific, highly specialized solutions.",
@@ -144,23 +178,25 @@ export const slides: SlideContent[] = [
     id: 20,
     title: "Leading AI Organizations",
     subtitle: "Who is building the future?",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "A handful of massive organizations currently dominate foundational model research.",
       "Their varying philosophies (open vs closed source) shape the ecosystem."
     ]
   },
-  { id: 21, title: "Organization: OpenAI", layout: 'split', points: ["Focus: Large Language Models. Products: ChatGPT, GPT-4, DALL-E.", "Impact: Democratized global access to advanced AI tools and sparked the current boom."] },
-  { id: 22, title: "Organization: Google DeepMind", layout: 'split', points: ["Focus: Fundamental Research & AI Systems. Products: AlphaGo, Gemini, AlphaFold.", "Impact: Driving massive scientific breakthroughs (e.g., protein folding)."] },
-  { id: 23, title: "Organization: Microsoft", layout: 'split', points: ["Focus: Enterprise AI & Productivity. Products: Copilot, Azure AI.", "Impact: Integrating AI directly into the world's daily productivity software (Office, GitHub)."] },
-  { id: 24, title: "Organization: Anthropic", layout: 'split', points: ["Focus: Safe & Aligned AI Development. Products: Claude, Constitutional AI.", "Impact: Pioneering comprehensive safety frameworks and ethical model alignment."] },
-  { id: 25, title: "Organization: Meta", layout: 'split', points: ["Focus: Open-Source AI Ecosystems. Products: Llama series, OPT.", "Impact: Democratizing developer access by open-sourcing massive, powerful model weights."] },
-  { id: 26, title: "Organization: xAI", layout: 'split', points: ["Focus: AI Infrastructure & Unfiltered Models. Products: Grok, Colossus.", "Impact: Building next-generation hyper-scale AI systems at unprecedented speed."] },
+  { id: 21, title: "Organization: OpenAI", icon: 'Building2', layout: 'split', points: ["Focus: Large Language Models. Products: ChatGPT, GPT-4, DALL-E.", "Impact: Democratized global access to advanced AI tools and sparked the current boom."] },
+  { id: 22, title: "Organization: Google DeepMind", icon: 'Building2', layout: 'split', points: ["Focus: Fundamental Research & AI Systems. Products: AlphaGo, Gemini, AlphaFold.", "Impact: Driving massive scientific breakthroughs (e.g., protein folding)."] },
+  { id: 23, title: "Organization: Microsoft", icon: 'Building2', layout: 'split', points: ["Focus: Enterprise AI & Productivity. Products: Copilot, Azure AI.", "Impact: Integrating AI directly into the world's daily productivity software (Office, GitHub)."] },
+  { id: 24, title: "Organization: Anthropic", icon: 'Building2', layout: 'split', points: ["Focus: Safe & Aligned AI Development. Products: Claude, Constitutional AI.", "Impact: Pioneering comprehensive safety frameworks and ethical model alignment."] },
+  { id: 25, title: "Organization: Meta", icon: 'Building2', layout: 'split', points: ["Focus: Open-Source AI Ecosystems. Products: Llama series, OPT.", "Impact: Democratizing developer access by open-sourcing massive, powerful model weights."] },
+  { id: 26, title: "Organization: xAI", icon: 'Building2', layout: 'split', points: ["Focus: AI Infrastructure & Unfiltered Models. Products: Grok, Colossus.", "Impact: Building next-generation hyper-scale AI systems at unprecedented speed."] },
 
   // 27-35: LLMs & Agents
   {
     id: 27,
     title: "What's an LLM and Agent?",
+    icon: 'Cpu',
     layout: 'quote',
     points: [
       "Understanding Large Language Models and AI Agents is crucial to grasping the next evolution of artificial intelligence and automation."
@@ -170,6 +206,7 @@ export const slides: SlideContent[] = [
     id: 28,
     title: "Large Language Models (LLMs)",
     subtitle: "What it is",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "A neural network trained on vast text data to understand/generate human language.",
@@ -179,6 +216,7 @@ export const slides: SlideContent[] = [
   {
     id: 29,
     title: "LLM Characteristics",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "Processes text input -> generates text output.",
@@ -189,6 +227,7 @@ export const slides: SlideContent[] = [
   {
     id: 30,
     title: "LLM Use Cases",
+    icon: 'Sparkles',
     layout: 'split',
     points: [
       "Writing content, copywriting, answering general queries, translation.",
@@ -199,6 +238,7 @@ export const slides: SlideContent[] = [
     id: 31,
     title: "AI Agents",
     subtitle: "What it is",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "An autonomous system (often powered by an LLM) that perceives its environment.",
@@ -209,6 +249,7 @@ export const slides: SlideContent[] = [
   {
     id: 32,
     title: "AI Agent Characteristics",
+    icon: 'Cpu',
     layout: 'bullets',
     points: [
       "Can execute API calls, run code, or perform transactions.",
@@ -220,6 +261,7 @@ export const slides: SlideContent[] = [
   {
     id: 33,
     title: "AI Agent Use Cases",
+    icon: 'Cpu',
     layout: 'split',
     points: [
       "Fully automated customer service resolution, internet research.",
@@ -230,6 +272,7 @@ export const slides: SlideContent[] = [
     id: 34,
     title: "Agent Outsourcing",
     subtitle: "The Future of Work",
+    icon: 'Users',
     layout: 'bullets',
     points: [
       "Definition: Delegating tasks or workflows to AI agents rather than human contractors.",
@@ -242,6 +285,7 @@ export const slides: SlideContent[] = [
     id: 35,
     title: "The Human Element",
     subtitle: "In the Age of Agents",
+    icon: 'Cpu',
     layout: 'bullets',
     points: [
       "Agent outsourcing doesn't mean replacing humans entirely.",
@@ -255,6 +299,7 @@ export const slides: SlideContent[] = [
     id: 36,
     title: "Business Revolution",
     subtitle: "AI Adoption Across Industries",
+    icon: 'BrainCircuit',
     layout: 'bullets',
     points: [
       "AI is revolutionizing how businesses operate.",
@@ -263,22 +308,24 @@ export const slides: SlideContent[] = [
   },
   {
     id: 37,
-    title: "AI Adoption by Industry (%)",
+    title: "AI Adoption Readiness by Industry (%)",
+    icon: 'BrainCircuit',
     layout: 'bar-chart',
     chartData: [
-      { name: 'Healthcare', adoption: 75 },
-      { name: 'Finance', adoption: 80 },
-      { name: 'Retail', adoption: 65 },
-      { name: 'Logistics', adoption: 70 },
-      { name: 'Manufacturing', adoption: 60 },
-      { name: 'Technology', adoption: 85 },
-      { name: 'Media', adoption: 72 },
-      { name: 'Energy', adoption: 55 }
+      { name: 'Healthcare', value: 75 },
+      { name: 'Finance', value: 80 },
+      { name: 'Retail', value: 65 },
+      { name: 'Logistics', value: 70 },
+      { name: 'Manufacturing', value: 60 },
+      { name: 'Technology', value: 85 },
+      { name: 'Media', value: 72 },
+      { name: 'Energy', value: 55 }
     ]
   },
   {
     id: 38,
     title: "Early Adopters",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "Technology, Finance, Healthcare sectors.",
@@ -289,6 +336,7 @@ export const slides: SlideContent[] = [
   {
     id: 39,
     title: "Future Growth Sectors",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "Manufacturing, Energy, Agriculture sectors.",
@@ -301,6 +349,7 @@ export const slides: SlideContent[] = [
   {
     id: 40,
     title: "The Impact on Jobs",
+    icon: 'Users',
     layout: 'bullets',
     points: [
       "AI will fundamentally transform work, but not necessarily eliminate it.",
@@ -311,20 +360,26 @@ export const slides: SlideContent[] = [
   {
     id: 41,
     title: "Task Automation vs Augmentation (%)",
+    icon: 'Cpu',
     layout: 'stacked-bar-chart',
+    chartConfig: {
+      value1Name: "Replaceable %",
+      value2Name: "Augmented %"
+    },
     chartData: [
-      { role: 'Administrative', replaced: 40, augmented: 60 },
-      { role: 'Customer Svc.', replaced: 50, augmented: 50 },
-      { role: 'Data Entry', replaced: 70, augmented: 30 },
-      { role: 'Coding', replaced: 20, augmented: 80 },
-      { role: 'Research', replaced: 15, augmented: 85 },
-      { role: 'Creative', replaced: 10, augmented: 90 },
-      { role: 'Management', replaced: 5, augmented: 95 }
+      { name: 'Administrative', value1: 40, value2: 60 },
+      { name: 'Customer Svc.', value1: 50, value2: 50 },
+      { name: 'Data Entry', value1: 70, value2: 30 },
+      { name: 'Coding', value1: 20, value2: 80 },
+      { name: 'Research', value1: 15, value2: 85 },
+      { name: 'Creative', value1: 10, value2: 90 },
+      { name: 'Management', value1: 5, value2: 95 }
     ]
   },
   {
     id: 42,
     title: "Replaceable Tasks",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "Routine data processing and entry.",
@@ -335,6 +390,7 @@ export const slides: SlideContent[] = [
   {
     id: 43,
     title: "Augmented Work",
+    icon: 'Users',
     layout: 'bullets',
     points: [
       "Complex problem-solving and systems thinking.",
@@ -345,6 +401,7 @@ export const slides: SlideContent[] = [
   {
     id: 44,
     title: "Job Impact Case Studies",
+    icon: 'Users',
     layout: 'split',
     points: [
       "Medical: AI helps radiologists process more scans faster. Best outcomes result from Human + AI collaboration.",
@@ -356,6 +413,7 @@ export const slides: SlideContent[] = [
   {
     id: 45,
     title: "AI and Data Analytics",
+    icon: 'Database',
     layout: 'bullets',
     points: [
       "Data is the absolute fuel of AI.",
@@ -364,16 +422,20 @@ export const slides: SlideContent[] = [
   },
   {
     id: 46,
-    title: "Analytics Maturity: Stage 1 & 2",
-    layout: 'split',
-    points: [
-      "Stage 1 (1990s): Descriptive Analytics. 'What happened?' Driven by Reports and Dashboards.",
-      "Stage 2 (2000s): Diagnostic Analytics. 'Why did it happen?' Driven by Analysis and deep-dive Insights."
+    title: "Analytics Data Processing Volume",
+    icon: 'Database',
+    layout: 'pie-chart',
+    chartData: [
+      { name: 'Descriptive Analytics', value: 40 },
+      { name: 'Diagnostic Analytics', value: 30 },
+      { name: 'Predictive Analytics', value: 20 },
+      { name: 'Prescriptive Analytics', value: 10 }
     ]
   },
   {
     id: 47,
     title: "Analytics Maturity: Stage 3 & 4",
+    icon: 'Database',
     layout: 'split',
     points: [
       "Stage 3 (2010s): Predictive Analytics. 'What will happen?' Driven by ML Models and Forecasts.",
@@ -383,6 +445,7 @@ export const slides: SlideContent[] = [
   {
     id: 48,
     title: "The Data Pipeline (Pt 1)",
+    icon: 'Database',
     layout: 'split',
     points: [
       "1. Collection: Gather data from disparate sources (APIs, logs, forms).",
@@ -392,6 +455,7 @@ export const slides: SlideContent[] = [
   {
     id: 49,
     title: "The Data Pipeline (Pt 2)",
+    icon: 'Database',
     layout: 'split',
     points: [
       "3. Analysis: Extract features, insights, and hidden patterns via ML.",
@@ -401,6 +465,7 @@ export const slides: SlideContent[] = [
   {
     id: 50,
     title: "Key Data Technologies",
+    icon: 'Database',
     layout: 'bullets',
     points: [
       "Data Warehousing: Centralized data storage (Snowflake, BigQuery).",
@@ -413,6 +478,7 @@ export const slides: SlideContent[] = [
   {
     id: 51,
     title: "AI in Finance: Fraud Detection",
+    icon: 'Briefcase',
     layout: 'bullets',
     points: [
       "Real-Time Detection: Analyzing thousands of data points in milliseconds.",
@@ -423,6 +489,7 @@ export const slides: SlideContent[] = [
   {
     id: 52,
     title: "Enterprise Finance: JP Morgan & BlackRock",
+    icon: 'Briefcase',
     layout: 'split',
     points: [
       "JPMorgan Chase: 'COIN' reviews commercial loans. 360,000 human hours reduced to seconds. ($300M+ value)",
@@ -432,6 +499,7 @@ export const slides: SlideContent[] = [
   {
     id: 53,
     title: "Enterprise Finance: Amex & HSBC",
+    icon: 'Briefcase',
     layout: 'split',
     points: [
       "American Express: Processes millions of daily transactions finding fraud with 95%+ accuracy. ($200M savings)",
@@ -441,6 +509,7 @@ export const slides: SlideContent[] = [
   {
     id: 54,
     title: "Enterprise Finance: Goldman Sachs & Citi",
+    icon: 'Briefcase',
     layout: 'split',
     points: [
       "Goldman Sachs: Automated algorithmic trading floors; 40% improvement in efficiency and risk management.",
@@ -452,6 +521,7 @@ export const slides: SlideContent[] = [
   {
     id: 55,
     title: "Professional Tools: Productivity & Research",
+    icon: 'Sparkles',
     layout: 'split',
     points: [
       "Productivity & Writing: ChatGPT (GPT-4), Claude 3, Notion AI, Grammarly",
@@ -461,6 +531,7 @@ export const slides: SlideContent[] = [
   {
     id: 56,
     title: "Professional Tools: Creative & Code",
+    icon: 'Terminal',
     layout: 'split',
     points: [
       "Creative & Design: Midjourney, DALL-E 3, Adobe Firefly, Canva AI",
@@ -470,6 +541,7 @@ export const slides: SlideContent[] = [
   {
     id: 57,
     title: "Free vs Paid AI Tools",
+    icon: 'BrainCircuit',
     layout: 'split',
     points: [
       "Free Tier: Best for exploration, learning, small prototypes. Examples: ChatGPT 3.5, Claude Haiku, Perplexity Free.",
@@ -479,6 +551,7 @@ export const slides: SlideContent[] = [
   {
     id: 58,
     title: "Choosing the Right Tool",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "Capabilities: Match the tool's core strength to your exact requirements.",
@@ -492,6 +565,7 @@ export const slides: SlideContent[] = [
     id: 59,
     title: "The Art of Prompt Engineering",
     subtitle: "A new communication skill",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "Getting the best results from AI requires crafting effective prompts.",
@@ -502,6 +576,7 @@ export const slides: SlideContent[] = [
   {
     id: 60,
     title: "The Effective Prompt Formula",
+    icon: 'Terminal',
     layout: 'bullets',
     points: [
       "1. Role: Define what you want the AI to be ('You are an expert...').",
@@ -513,6 +588,7 @@ export const slides: SlideContent[] = [
   {
     id: 61,
     title: "Advanced Prompting: Chain of Thought",
+    icon: 'Terminal',
     layout: 'bullets',
     points: [
       "Asking the AI to explain its reasoning step-by-step.",
@@ -523,6 +599,7 @@ export const slides: SlideContent[] = [
   {
     id: 62,
     title: "Advanced Prompting: Few-Shot Learning",
+    icon: 'Terminal',
     layout: 'bullets',
     points: [
       "Providing examples of what you want before asking the actual question.",
@@ -535,6 +612,7 @@ export const slides: SlideContent[] = [
   {
     id: 63,
     title: "AI-Powered Automation & Workflows",
+    icon: 'Users',
     layout: 'bullets',
     points: [
       "Combining AI with traditional workflow automation can dramatically increase productivity.",
@@ -544,6 +622,7 @@ export const slides: SlideContent[] = [
   {
     id: 64,
     title: "Common Automation Use Cases",
+    icon: 'Cpu',
     layout: 'split',
     points: [
       "Summarizing articles and auto-generating newsletters daily.",
@@ -553,6 +632,7 @@ export const slides: SlideContent[] = [
   {
     id: 65,
     title: "Example Pipeline: Research to Insights",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "1. Monitor: RSS feed collects industry news automatically.",
@@ -566,12 +646,14 @@ export const slides: SlideContent[] = [
   {
     id: 66,
     title: "AI Ethics & Concerns",
+    icon: 'ShieldCheck',
     layout: 'quote',
     points: ["With great power comes great responsibility. Understanding the ethical implications of AI is crucial for responsible deployment."]
   },
   {
     id: 67,
     title: "Ethical Concern: Bias & Misinformation",
+    icon: 'ShieldCheck',
     layout: 'split',
     points: [
       "Bias: Models trained on biased internet data can perpetuate discrimination (e.g., biased hiring tools).",
@@ -581,6 +663,7 @@ export const slides: SlideContent[] = [
   {
     id: 68,
     title: "Ethical Concern: Privacy & Workforce",
+    icon: 'Users',
     layout: 'split',
     points: [
       "Privacy: Models can memorize and leak personal/sensitive data. Never paste API keys into ChatGPT.",
@@ -590,6 +673,7 @@ export const slides: SlideContent[] = [
   {
     id: 69,
     title: "Ethical Concern: Alignment",
+    icon: 'ShieldCheck',
     layout: 'bullets',
     points: [
       "Autonomous Weapons: AI-driven military tech raises accountability concerns.",
@@ -599,6 +683,7 @@ export const slides: SlideContent[] = [
   {
     id: 70,
     title: "Responsible Actions",
+    icon: 'Sparkles',
     layout: 'split',
     points: [
       "Individual: Verify info, protect privacy, understand limitations.",
@@ -611,6 +696,7 @@ export const slides: SlideContent[] = [
     id: 71,
     title: "Preparing for the AI-Powered Future",
     subtitle: "Humans Collaborating with AI",
+    icon: 'BrainCircuit',
     layout: 'bullets',
     points: [
       "The future of work isn't about humans vs AI.",
@@ -621,6 +707,7 @@ export const slides: SlideContent[] = [
   {
     id: 72,
     title: "The 3 Pillars of AI-Readiness",
+    icon: 'BrainCircuit',
     layout: 'bullets',
     points: [
       "1. Technical Fluency: Knowing what AI can/cannot do. Hands-on experience.",
@@ -631,6 +718,7 @@ export const slides: SlideContent[] = [
   {
     id: 73,
     title: "5-Year Action Plan",
+    icon: 'Sparkles',
     layout: 'bullets',
     points: [
       "Year 1: Foundation (Learn basics, identify opportunities).",
@@ -642,6 +730,7 @@ export const slides: SlideContent[] = [
   {
     id: 74,
     title: "Key Takeaway: Transformation",
+    icon: 'Sparkles',
     layout: 'split',
     points: [
       "AI is Transformative: It's a fundamental shift in how we work, live, and solve problems.",
@@ -651,6 +740,7 @@ export const slides: SlideContent[] = [
   {
     id: 75,
     title: "Key Takeaway: Partnership",
+    icon: 'Sparkles',
     layout: 'split',
     points: [
       "Collaboration > Competition: The best outcomes come from combining human creative context with AI efficiency.",
@@ -660,6 +750,7 @@ export const slides: SlideContent[] = [
   {
     id: 76,
     title: "Key Takeaway: Ethics & Timing",
+    icon: 'ShieldCheck',
     layout: 'split',
     points: [
       "Ethics is Essential: Responsible deployment requires transparency and fairness.",
@@ -670,6 +761,7 @@ export const slides: SlideContent[] = [
     id: 77,
     title: "Thank You",
     subtitle: "The Future is Collaboration",
+    icon: 'Sparkles',
     layout: 'title',
     points: [
       "Connect with me on LinkedIn to continue the conversation."

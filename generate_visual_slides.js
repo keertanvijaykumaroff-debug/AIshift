@@ -6,8 +6,12 @@ export interface SlideContent {
   title: string;
   subtitle?: string;
   points?: string[];
-  layout: 'title' | 'bullets' | 'split' | 'quote' | 'bar-chart' | 'stacked-bar-chart';
+  layout: 'title' | 'bullets' | 'split' | 'quote' | 'bar-chart' | 'stacked-bar-chart' | 'line-chart' | 'pie-chart';
   chartData?: any[];
+  chartConfig?: {
+    value1Name?: string;
+    value2Name?: string;
+  };
   extraContent?: any;
 }
 
@@ -73,14 +77,29 @@ export const slides: SlideContent[] = [
     ]
   },
 
-  // 7-13: Timeline
-  { id: 7, title: "Evolution Timeline: 1950", subtitle: "The Birth of AI", layout: 'bullets', points: ["Alan Turing proposes the 'Imitation Game' test for machine intelligence (The Turing Test).", "Forms the philosophical foundation of AI."] },
-  { id: 8, title: "Evolution Timeline: 1974-1980", subtitle: "First AI Winter", layout: 'bullets', points: ["Reduced funding and public interest.", "Caused by unmet expectations and early technological limitations in compute power."] },
-  { id: 9, title: "Evolution Timeline: 1997", subtitle: "Deep Blue", layout: 'bullets', points: ["IBM's Deep Blue defeats world chess champion Garry Kasparov.", "A major milestone in rule-based, game-playing AI."] },
-  { id: 10, title: "Evolution Timeline: 2012", subtitle: "Deep Learning Revolution", layout: 'bullets', points: ["AlexNet wins the ImageNet competition by a massive margin.", "Sparks a massive surge in deep learning research and GPU cloud investment."] },
-  { id: 11, title: "Evolution Timeline: 2016", subtitle: "AlphaGo Victory", layout: 'bullets', points: ["DeepMind's AlphaGo defeats world Go champion Lee Sedol.", "Mastering a game previously thought too complex for machines using Reinforcement Learning."] },
-  { id: 12, title: "Evolution Timeline: 2022-2024", subtitle: "Generative AI Boom", layout: 'bullets', points: ["ChatGPT, GPT-4, Claude, and other Large Language Models (LLMs) are released.", "Completely transforms the global AI landscape and public accessibility."] },
-  { id: 13, title: "Evolution Timeline: 2025-2026", subtitle: "AI Integration Era", layout: 'bullets', points: ["AI becomes deeply embedded in everyday tools.", "Enterprise workflows and applications across all industries adopt agentic AI."] },
+  // 7: Timeline visual
+  {
+    id: 7,
+    title: "Evolution of AI: Interest & Capability",
+    subtitle: "A visualization of AI's timeline",
+    layout: 'line-chart',
+    chartData: [
+      { name: '1950', value: 10 },
+      { name: '1974', value: 5 },
+      { name: '1997', value: 25 },
+      { name: '2012', value: 45 },
+      { name: '2016', value: 65 },
+      { name: '2024', value: 95 }
+    ]
+  },
+
+  // 8-13: Timeline text points
+  { id: 8, title: "Evolution Timeline: 1950", subtitle: "The Birth of AI", layout: 'bullets', points: ["Alan Turing proposes the 'Imitation Game' test for machine intelligence (The Turing Test).", "Forms the philosophical foundation of AI."] },
+  { id: 9, title: "Evolution Timeline: 1974-1980", subtitle: "First AI Winter", layout: 'bullets', points: ["Reduced funding and public interest.", "Caused by unmet expectations and early technological limitations in compute power."] },
+  { id: 10, title: "Evolution Timeline: 1997", subtitle: "Deep Blue", layout: 'bullets', points: ["IBM's Deep Blue defeats world chess champion Garry Kasparov.", "A major milestone in rule-based, game-playing AI."] },
+  { id: 11, title: "Evolution Timeline: 2012", subtitle: "Deep Learning Revolution", layout: 'bullets', points: ["AlexNet wins the ImageNet competition by a massive margin.", "Sparks a massive surge in deep learning research and GPU cloud investment."] },
+  { id: 12, title: "Evolution Timeline: 2016", subtitle: "AlphaGo Victory", layout: 'bullets', points: ["DeepMind's AlphaGo defeats world Go champion Lee Sedol.", "Mastering a game previously thought too complex for machines using Reinforcement Learning."] },
+  { id: 13, title: "Evolution Timeline: 2022-2024", subtitle: "Generative AI Boom", layout: 'bullets', points: ["ChatGPT, GPT-4, Claude, and other Large Language Models (LLMs) are released.", "Completely transforms the global AI landscape and public accessibility."] },
 
   // 14-19: Landscape
   {
@@ -265,17 +284,17 @@ export const slides: SlideContent[] = [
   },
   {
     id: 37,
-    title: "AI Adoption by Industry (%)",
+    title: "AI Adoption Readiness by Industry (%)",
     layout: 'bar-chart',
     chartData: [
-      { name: 'Healthcare', adoption: 75 },
-      { name: 'Finance', adoption: 80 },
-      { name: 'Retail', adoption: 65 },
-      { name: 'Logistics', adoption: 70 },
-      { name: 'Manufacturing', adoption: 60 },
-      { name: 'Technology', adoption: 85 },
-      { name: 'Media', adoption: 72 },
-      { name: 'Energy', adoption: 55 }
+      { name: 'Healthcare', value: 75 },
+      { name: 'Finance', value: 80 },
+      { name: 'Retail', value: 65 },
+      { name: 'Logistics', value: 70 },
+      { name: 'Manufacturing', value: 60 },
+      { name: 'Technology', value: 85 },
+      { name: 'Media', value: 72 },
+      { name: 'Energy', value: 55 }
     ]
   },
   {
@@ -314,14 +333,18 @@ export const slides: SlideContent[] = [
     id: 41,
     title: "Task Automation vs Augmentation (%)",
     layout: 'stacked-bar-chart',
+    chartConfig: {
+      value1Name: "Replaceable %",
+      value2Name: "Augmented %"
+    },
     chartData: [
-      { role: 'Administrative', replaced: 40, augmented: 60 },
-      { role: 'Customer Svc.', replaced: 50, augmented: 50 },
-      { role: 'Data Entry', replaced: 70, augmented: 30 },
-      { role: 'Coding', replaced: 20, augmented: 80 },
-      { role: 'Research', replaced: 15, augmented: 85 },
-      { role: 'Creative', replaced: 10, augmented: 90 },
-      { role: 'Management', replaced: 5, augmented: 95 }
+      { name: 'Administrative', value1: 40, value2: 60 },
+      { name: 'Customer Svc.', value1: 50, value2: 50 },
+      { name: 'Data Entry', value1: 70, value2: 30 },
+      { name: 'Coding', value1: 20, value2: 80 },
+      { name: 'Research', value1: 15, value2: 85 },
+      { name: 'Creative', value1: 10, value2: 90 },
+      { name: 'Management', value1: 5, value2: 95 }
     ]
   },
   {
@@ -366,11 +389,13 @@ export const slides: SlideContent[] = [
   },
   {
     id: 46,
-    title: "Analytics Maturity: Stage 1 & 2",
-    layout: 'split',
-    points: [
-      "Stage 1 (1990s): Descriptive Analytics. 'What happened?' Driven by Reports and Dashboards.",
-      "Stage 2 (2000s): Diagnostic Analytics. 'Why did it happen?' Driven by Analysis and deep-dive Insights."
+    title: "Analytics Data Processing Volume",
+    layout: 'pie-chart',
+    chartData: [
+      { name: 'Descriptive Analytics', value: 40 },
+      { name: 'Diagnostic Analytics', value: 30 },
+      { name: 'Predictive Analytics', value: 20 },
+      { name: 'Prescriptive Analytics', value: 10 }
     ]
   },
   {
@@ -681,4 +706,4 @@ export const slides: SlideContent[] = [
 `;
 
 fs.writeFileSync('c:/Users/keert/Downloads/b_NM206Jdkp02-1773151280151/data/slides.ts', fileContent);
-console.log('Slides successfully updated to 77 counts.');
+console.log('Slides successfully updated with new visual charts.');
