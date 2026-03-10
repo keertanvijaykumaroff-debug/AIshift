@@ -4,8 +4,7 @@ export interface SlideContent {
   title: string;
   subtitle?: string;
   points?: string[];
-    icon: 'Sparkles',
-  layout: 'title' | 'bullets' | 'split' | 'quote' | 'bar-chart' | 'stacked-bar-chart' | 'line-chart' | 'pie-chart';
+  layout: 'title' | 'bullets' | 'split' | 'quote' | 'bar-chart' | 'stacked-bar-chart' | 'line-chart' | 'pie-chart' | 'qr-code';
   chartData?: any[];
   chartConfig?: {
     value1Name?: string;
@@ -25,7 +24,7 @@ export const slides: SlideContent[] = [
     layout: 'title',
     points: ['Keertan Vijaykumar']
   },
-  
+
   // 2-6: Intro
   {
     id: 2,
@@ -762,9 +761,12 @@ export const slides: SlideContent[] = [
     title: "Thank You",
     subtitle: "The Future is Collaboration",
     icon: 'Sparkles',
-    layout: 'title',
+    layout: 'qr-code',
     points: [
-      "Connect with me on LinkedIn to continue the conversation."
-    ]
+      "Connect with me on LinkedIn and Linktree to continue the conversation."
+    ],
+    extraContent: {
+      qrImage: "/qr-code.png"
+    }
   }
 ];

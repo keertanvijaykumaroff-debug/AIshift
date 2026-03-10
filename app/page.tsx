@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import { slides } from '@/data/slides';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from 'recharts';
 import * as Icons from 'lucide-react';
@@ -208,6 +209,28 @@ export default function Home() {
                         <Legend iconType="circle" />
                       </PieChart>
                     </ResponsiveContainer>
+                  </div>
+                )}
+                {/* QR Code Finale */}
+                {slide.layout === 'qr-code' && (
+                  <div className="flex flex-col items-center justify-center mt-auto mb-auto gap-8">
+                    {slide.points && slide.points.length > 0 && (
+                      <p className="text-xl sm:text-2xl lg:text-3xl text-slate-500 font-medium text-center max-w-2xl">
+                        {slide.points[0]}
+                      </p>
+                    )}
+                    {slide.extraContent?.qrImage && (
+                      <div className="bg-white p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 flex flex-col items-center group">
+                        <Image
+                          src={slide.extraContent.qrImage}
+                          alt={slide.extraContent.qrAlt || "QR Code"}
+                          width={240}
+                          height={240}
+                          className="rounded-xl group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <p className="mt-6 text-lg font-bold text-indigo-600 tracking-wide uppercase">Connect With Me</p>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
