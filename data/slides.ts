@@ -344,11 +344,12 @@ export const slides: SlideContent[] = [
     icon: 'FileText',
     layout: 'bullets',
     points: [
-      "Upload PDF",
-      "→ AI extracts insights",
-      "→ send analysis."
+      "Sync ERP & databases",
+      "→ Extract & aggregate metrics",
+      "→ Generate SEC draft",
+      "→ Review & publish."
     ],
-    extraContent: { imagePlaceholder: "Screenshot: Earnings PDF Automation" }
+    extraContent: { image: "/slide-31-demo.png" }
   },
   {
     id: 32,
