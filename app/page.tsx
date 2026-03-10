@@ -14,7 +14,28 @@ const getIcon = (iconName?: string) => {
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(1);
+  const [revealedPoints, setRevealedPoints] = useState<Record<number, number>>({});
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleScreenClick = () => {
+    const currentSlideData = slides[currentSlide - 1];
+    if (currentSlideData?.points && currentSlideData.layout === 'bullets') {
+      const currentRevealed = revealedPoints[currentSlideData.id] || 0;
+      if (currentRevealed < currentSlideData.points.length) {
+        setRevealedPoints(prev => ({ ...prev, [currentSlideData.id]: currentRevealed + 1 }));
+      } else if (currentSlide < slides.length) {
+        containerRef.current?.scrollTo({
+          top: currentSlide * containerRef.current.clientHeight,
+          behavior: 'smooth'
+        });
+      }
+    } else if (currentSlide < slides.length) {
+      containerRef.current?.scrollTo({
+        top: currentSlide * containerRef.current.clientHeight,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   // Keyboard navigation
   useEffect(() => {
@@ -53,16 +74,14 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen w-full bg-slate-50 overflow-hidden flex flex-col items-center justify-center p-2 sm:p-4">
-      {/* 
-        Slide Container 
-        Expanded to max width and nearly full height (max-w-[95vw] h-[90vh])
-        while retaining the snap logic.
-      */}
+    <div
+      className="h-screen w-screen bg-white overflow-hidden flex flex-col items-center justify-center cursor-pointer"
+      onClick={handleScreenClick}
+    >
       <div
         ref={containerRef}
         onScroll={handleScroll}
-        className="w-full h-full max-w-[95vw] sm:max-w-7xl max-h-[90vh] bg-white shadow-[0_8px_30px_rgb(0,0,0,0.06)] ring-1 ring-slate-900/5 rounded-2xl overflow-y-auto snap-y snap-mandatory relative scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        className="w-full h-full bg-white overflow-y-auto snap-y snap-mandatory relative scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         {slides.map((slide, index) => {
           const SlideIcon = getIcon((slide as any).icon);
@@ -72,7 +91,7 @@ export default function Home() {
               className="w-full h-full snap-start snap-always shrink-0 flex flex-col p-10 sm:p-14 lg:p-20 relative bg-white"
             >
               {/* Corner Logo */}
-              <div className="absolute top-6 right-6 lg:top-8 lg:right-8 opacity-90 z-10 w-24 sm:w-32">
+              <div className="absolute top-6 left-6 lg:top-8 lg:left-8 opacity-90 z-10 w-24 sm:w-32">
                 <Image
                   src="/DMKV.png"
                   alt="DMKV"
@@ -84,7 +103,7 @@ export default function Home() {
 
               {/* Slide Header (Hidden on Title slides) */}
               {slide.layout !== 'title' && (
-                <div className="mb-8 shrink-0 flex items-start gap-4 lg:gap-6">
+                <div className="mb-8 shrink-0 flex items-start gap-4 lg:gap-6 mt-12 lg:mt-16">
                   <div className="p-3 lg:p-4 bg-indigo-50 rounded-2xl shrink-0 mt-1">
                     <SlideIcon className="w-8 h-8 lg:w-12 lg:h-12 text-indigo-500" />
                   </div>
@@ -125,14 +144,21 @@ export default function Home() {
 
                 {slide.layout === 'bullets' && slide.points && (
                   <div className="grid gap-6 sm:gap-8 max-w-5xl">
-                    {slide.points.map((point, i) => (
-                      <div key={i} className="flex items-start gap-5 bg-slate-50 border border-slate-100 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-                        <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-indigo-500 mt-2 sm:mt-3 shrink-0"></span>
-                        <span className="text-xl sm:text-2xl lg:text-[1.75rem] text-slate-700 leading-relaxed font-medium">
-                          {point}
-                        </span>
-                      </div>
-                    ))}
+                    {slide.points.map((point, i) => {
+                      const isVisible = i < (revealedPoints[slide.id] || 0);
+                      return (
+                        <div
+                          key={i}
+                          className={`flex items-start gap-5 bg-slate-50 border border-slate-100 p-6 sm:p-8 rounded-2xl shadow-sm transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+                            }`}
+                        >
+                          <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-indigo-500 mt-2 sm:mt-3 shrink-0"></span>
+                          <span className="text-xl sm:text-2xl lg:text-[1.75rem] text-slate-700 leading-relaxed font-medium">
+                            {point}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
 
@@ -273,14 +299,8 @@ export default function Home() {
                   </div>
                 )}
               </div>
-
-              {/* Slide Footer */}
-              <div className="absolute bottom-6 right-8 lg:bottom-10 lg:right-12 text-slate-400 font-mono text-lg lg:text-xl">
-                {index + 1} / {slides.length}
-              </div>
-
               {/* Progress indicator border */}
-              <div className="absolute top-0 left-0 w-full h-[6px] bg-slate-100">
+              <div className="absolute top-0 left-0 w-full h-[6px] bg-slate-100 z-50">
                 <div
                   className="h-full bg-indigo-500 transition-all duration-300"
                   style={{ width: `${((index + 1) / slides.length) * 100}%` }}
@@ -289,29 +309,6 @@ export default function Home() {
             </div>
           );
         })}
-      </div>
-
-      {/* Presentation Controls */}
-      <div className="mt-4 sm:mt-6 flex gap-4 sm:gap-6 items-center bg-white shadow-md border border-slate-200 p-2 sm:p-3 rounded-full">
-        <button
-          onClick={() => containerRef.current?.scrollTo({ top: Math.max(0, currentSlide - 2) * containerRef.current.clientHeight, behavior: 'smooth' })}
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full hover:bg-slate-100 text-slate-700 flex items-center justify-center transition disabled:opacity-30 disabled:hover:bg-transparent"
-          disabled={currentSlide === 1}
-          aria-label="Previous Slide"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-        </button>
-        <span className="text-slate-500 font-mono text-base sm:text-lg px-2 sm:px-4 shrink-0">
-          Slide {currentSlide} of {slides.length}
-        </span>
-        <button
-          onClick={() => containerRef.current?.scrollTo({ top: currentSlide * containerRef.current.clientHeight, behavior: 'smooth' })}
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full hover:bg-slate-100 text-slate-700 flex items-center justify-center transition disabled:opacity-30 disabled:hover:bg-transparent"
-          disabled={currentSlide === slides.length}
-          aria-label="Next Slide"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-        </button>
       </div>
     </div>
   );
