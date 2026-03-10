@@ -284,9 +284,9 @@ export default function Home() {
 
                 {/* Real Image Rendering */}
                 {slide.extraContent?.image && (
-                  <div className={`mt-8 flex-1 w-full flex flex-col items-center justify-center transition-all duration-500 ${(revealedPoints[slide.id] || 0) > (slide.points?.length || 0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+                  <div className={`mt-8 flex-1 w-full min-h-0 flex flex-col transition-all duration-500 ${(revealedPoints[slide.id] || 0) > (slide.points?.length || 0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
                     }`}>
-                    <div className="relative w-full max-w-4xl h-[300px] lg:h-[450px] shadow-xl rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 flex items-center justify-center p-2">
+                    <div className="relative w-full h-full min-h-[300px] lg:min-h-[400px] shadow-xl rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 flex items-center justify-center p-2 mt-auto mb-auto">
                       <Image
                         src={slide.extraContent.image}
                         alt="Slide Screenshot"
