@@ -145,17 +145,18 @@ export default function Home() {
                 )}
 
                 {slide.layout === 'bullets' && slide.points && (
-                  <div className="grid gap-6 sm:gap-8 max-w-5xl">
+                  <div className={`grid ${slide.extraContent?.image || slide.extraContent?.imagePlaceholder ? 'gap-3 sm:gap-4 lg:gap-5' : 'gap-6 sm:gap-8'} max-w-5xl shrink-0`}>
                     {slide.points.map((point, i) => {
                       const isVisible = i < (revealedPoints[slide.id] || 0);
+                      const hasImage = slide.extraContent?.image || slide.extraContent?.imagePlaceholder;
                       return (
                         <div
                           key={i}
-                          className={`flex items-start gap-5 bg-slate-50 border border-slate-100 p-6 sm:p-8 rounded-2xl shadow-sm transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+                          className={`flex items-start ${hasImage ? 'gap-3 p-4 sm:p-5 lg:p-6 bg-slate-50/80' : 'gap-5 p-6 sm:p-8 bg-slate-50'} border border-slate-100 rounded-2xl shadow-sm transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
                             }`}
                         >
-                          <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-indigo-500 mt-2 sm:mt-3 shrink-0"></span>
-                          <span className="text-xl sm:text-2xl lg:text-[1.75rem] text-slate-700 leading-relaxed font-medium">
+                          <span className={`rounded-full bg-indigo-500 shrink-0 ${hasImage ? 'w-2 h-2 sm:w-2.5 sm:h-2.5 mt-2 sm:mt-2.5' : 'w-3 h-3 sm:w-4 sm:h-4 mt-2 sm:mt-3'}`}></span>
+                          <span className={`text-slate-700 leading-relaxed font-medium ${hasImage ? 'text-lg sm:text-xl lg:text-[1.35rem]' : 'text-xl sm:text-2xl lg:text-[1.75rem]'}`}>
                             {point}
                           </span>
                         </div>
@@ -284,9 +285,9 @@ export default function Home() {
 
                 {/* Real Image Rendering */}
                 {slide.extraContent?.image && (
-                  <div className={`mt-8 flex-1 w-full min-h-0 flex flex-col transition-all duration-500 ${(revealedPoints[slide.id] || 0) > (slide.points?.length || 0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+                  <div className={`mt-6 lg:mt-8 flex-1 w-full min-h-0 flex flex-col transition-all duration-500 ${(revealedPoints[slide.id] || 0) > (slide.points?.length || 0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
                     }`}>
-                    <div className="relative w-full h-full min-h-[300px] lg:min-h-[400px] shadow-xl rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 flex items-center justify-center p-2 mt-auto mb-auto">
+                    <div className="relative w-full h-full shadow-lg rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 flex items-center justify-center p-2">
                       <Image
                         src={slide.extraContent.image}
                         alt="Slide Screenshot"
