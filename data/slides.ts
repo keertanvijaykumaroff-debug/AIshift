@@ -336,7 +336,7 @@ export const slides: SlideContent[] = [
       "→ AI sentiment analysis",
       "→ market report."
     ],
-    extraContent: { imagePlaceholder: "Screenshot: Finance News Automation" }
+    extraContent: { image: "/slide-30-demo.png" }
   },
   {
     id: 31,
