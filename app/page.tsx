@@ -22,7 +22,7 @@ export default function Home() {
 
     // Calculate total items to reveal
     const pointsCount = currentSlideData?.points?.length || 0;
-    const hasExtra = (currentSlideData?.extraContent?.imagePlaceholder || currentSlideData?.extraContent?.qrImage) ? 1 : 0;
+    const hasExtra = (currentSlideData?.extraContent?.imagePlaceholder || currentSlideData?.extraContent?.image || currentSlideData?.extraContent?.qrImage) ? 1 : 0;
     const totalItems = pointsCount + hasExtra;
 
     if (totalItems > 0) {
@@ -279,6 +279,21 @@ export default function Home() {
                     <p className="text-sm mt-2 opacity-70 px-4 text-center">
                       (Insert screenshot/image here)
                     </p>
+                  </div>
+                )}
+
+                {/* Real Image Rendering */}
+                {slide.extraContent?.image && (
+                  <div className={`mt-8 flex-1 w-full flex flex-col items-center justify-center transition-all duration-500 ${(revealedPoints[slide.id] || 0) > (slide.points?.length || 0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+                    }`}>
+                    <div className="relative w-full max-w-4xl h-[300px] lg:h-[450px] shadow-xl rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 flex items-center justify-center p-2">
+                      <Image
+                        src={slide.extraContent.image}
+                        alt="Slide Screenshot"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
                   </div>
                 )}
 

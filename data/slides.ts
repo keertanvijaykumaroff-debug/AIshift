@@ -150,7 +150,7 @@ export const slides: SlideContent[] = [
       "3. Generate report",
       "Fully automated."
     ],
-    extraContent: { imagePlaceholder: "Screenshot: Perplexity Competitor Research" }
+    extraContent: { image: "/slide-13-demo.png" }
   },
   {
     id: 14,
