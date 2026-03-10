@@ -324,7 +324,7 @@ export const slides: SlideContent[] = [
       "→ Process",
       "→ Action."
     ],
-    extraContent: { imagePlaceholder: "Screenshot: n8n Workflow" }
+    extraContent: { image: "/slide-29-demo.png" }
   },
   {
     id: 30,
