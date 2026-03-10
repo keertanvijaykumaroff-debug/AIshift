@@ -74,7 +74,7 @@ export default function Home() {
               {/* Corner Logo */}
               <div className="absolute top-6 right-6 lg:top-8 lg:right-8 opacity-90 z-10 w-24 sm:w-32">
                 <Image
-                  src="https://storage.googleapis.com/antigravity-artifacts-dev/72ced6a19f2015c7e090/0-ddfa9dbfcbed29d9.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=antigravity-gcs%40antigravity-dev-944f.iam.gserviceaccount.com%2F20260310%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260310T153521Z&X-Goog-Expires=604800&X-Goog-Signature=8987b77ab6841ce2b9fcbcdfd10d6a9d18fa42093556ae53ea1a485596409b30c946e38b375d8d070622a5fb681b49e8dd67b9319b99e900caddba11b816828599cf062e74da05fe9e45c742c3da146c241957252f4eb273398c8cdae6fe0a33118ef3d3df9fd882fcb9ab4b12fe016aebdfec845fef3e52e160e1fd8b83dd4cbefb8b21ba1fb60c5ea2b197ec036a197775a610aeeb85038b14a2754641e9ab7d2a58b09335bf3ce237c04af4cd65979ad6c4bb649c51326be8e0fa0c3ffecbf747683ca51db4fd8d438914b1c7dc4fa24b94cfa1bedeed7c2448ca336df7653f5eb0d8b767799b6ea46b4c311c4e7ab2f3453b0e515d0fa8ef647cc5e2ab24&X-Goog-SignedHeaders=host"
+                  src="/DMKV.png"
                   alt="DMKV"
                   width={200}
                   height={80}
