@@ -15,394 +15,586 @@ export interface SlideContent {
 }
 
 export const slides: SlideContent[] = [
-  // 1: Hero
   {
     id: 1,
-    title: "The AI Shift in Finance",
-    subtitle: "Practical Applications, Agents, and Prompting for Senior Professionals",
+    title: "THE AI SHIFT",
+    subtitle: "AI Agents, Automations & New Workflows",
     icon: 'Sparkles',
     layout: 'title',
-    points: ['Keertan Vijaykumar']
+    points: ['3-Hour Interactive Session']
   },
-  
-  // 2: The Real Shift
   {
     id: 2,
-    title: "The Real Shift",
-    subtitle: "Why Generative AI is different from traditional Machine Learning",
-    icon: 'Sparkles',
+    title: "Opening Question",
+    icon: 'HelpCircle',
     layout: 'bullets',
     points: [
-      "Finance has used predictive ML for a decade (algorithmic trading, credit scoring).",
-      "The current shift is Generative AI: Creating novel content, summarizing complex text, and reasoning autonomously.",
-      "The barrier to entry has moved from 'Coding' to 'Contextting' via Natural Language."
+      "Who uses AI every day?",
+      "What tools do you use?",
+      "What task takes the most time in your job?"
     ]
   },
-
-  // 3-6: AI Ecosystem & Data
   {
     id: 3,
-    title: "Analytics Processing Volume",
-    subtitle: "The evolution of financial data usage",
-    icon: 'Database',
-    layout: 'pie-chart',
-    chartData: [
-      { name: 'Descriptive Analytics', value: 40 },
-      { name: 'Diagnostic Analytics', value: 30 },
-      { name: 'Predictive Analytics', value: 20 },
-      { name: 'Prescriptive Analytics', value: 10 }
+    title: "The Core Idea of This Talk",
+    icon: 'Lightbulb',
+    layout: 'split',
+    points: [
+      "Old world:\n\nYou operate tools",
+      "New world:\n\nYou direct systems"
     ]
   },
   {
     id: 4,
-    title: "The Modern Data Pipeline",
-    icon: 'Database',
+    title: "Example",
+    icon: 'ArrowRightLeft',
     layout: 'split',
     points: [
-      "1. Collection & Processing: Gathering unstructured data (earnings calls, SEC filings) and structured logs (ETL).",
-      "2. Analysis & Action: Extracting sentiments via LLMs and automating prescriptive financial decisions."
+      "Old world:\n\nOpen Excel.\nAnalyze data manually.",
+      "New world:\n\nTell AI: \"Analyze this dataset and send me insights every morning.\""
     ]
   },
   {
     id: 5,
-    title: "Horizontal vs Vertical AI",
-    icon: 'Layers',
-    layout: 'bullets',
+    title: "Why This Is Called The AI Shift",
+    icon: 'TrendingUp',
+    layout: 'split',
     points: [
-      "Horizontal Tools: General-purpose chat interfaces used broadly (ChatGPT, Claude). High utility, low specialization.",
-      "Vertical Tools: Industry-specific, highly specialized solutions (BloombergGPT, Harvey for Legal/Compliance).",
-      "Finance demands Vertical accuracy built on top of Horizontal foundation models."
+      "People say:\n\nLearn ChatGPT\nLearn Claude\nLearn Gemini",
+      "Reality:\n\nYou will not operate tools.\nYou will direct systems."
     ]
   },
   {
     id: 6,
-    title: "AI Adoption Readiness by Industry (%)",
-    subtitle: "Where finance stands",
-    icon: 'Briefcase',
-    layout: 'bar-chart',
-    chartData: [
-      { name: 'Technology', value: 85 },
-      { name: 'Finance', value: 80 },
-      { name: 'Healthcare', value: 75 },
-      { name: 'Media', value: 72 },
-      { name: 'Logistics', value: 70 },
-      { name: 'Retail', value: 65 },
-      { name: 'Manufacturing', value: 60 },
-      { name: 'Energy', value: 55 }
+    title: "Chatbot vs LLM",
+    icon: 'BrainCircuit',
+    layout: 'split',
+    points: [
+      "LLM = Brain\nChatbot = Interface",
+      "Example:\n\nGPT = Brain\nChatGPT = Mouth"
     ]
   },
-
-  // 7-12: LLMs vs Agents
   {
     id: 7,
-    title: "What is an LLM?",
-    subtitle: "The 'Brain'",
-    icon: 'BrainCircuit',
+    title: "Why ChatGPT Sometimes Lies",
+    icon: 'AlertTriangle',
     layout: 'bullets',
     points: [
-      "Large Language Models (ChatGPT, Claude) are massive neural networks trained on vast text data.",
-      "Primary Function: Pattern recognition and generation of human-like language.",
-      "Input Text -> Statistical Reasoning -> Output Text."
+      "AI predicts language.",
+      "It does not verify facts.",
+      "Analogy: A student confidently answering incorrectly."
     ]
   },
   {
     id: 8,
-    title: "LLM Limitations",
-    icon: 'ShieldCheck',
+    title: "Reinforcement Learning",
+    icon: 'Award',
     layout: 'bullets',
     points: [
-      "Stateless: They do not possess inherent long-term memory of past interactions.",
-      "Trapped: They cannot independently access the internet, trigger APIs, or take actions (without tools).",
-      "Hallucinations: Will confidently state plausible but completely false financial figures if unsure."
+      "Models learn to:",
+      "• respond quickly",
+      "• sound confident",
+      "• satisfy users",
+      "Not necessarily to verify truth."
     ]
   },
   {
     id: 9,
-    title: "What is an AI Agent?",
-    subtitle: "The 'Hands and Eyes'",
-    icon: 'Cpu',
+    title: "AI Might Be the Last Innovation",
+    icon: 'Zap',
     layout: 'bullets',
     points: [
-      "An autonomous system powered by an LLM that can perceive its environment and act on it.",
-      "Has access to tools (web browsing, code execution, SQL database queries).",
-      "Can loop independently to achieve a complex, multi-step goal."
+      "Idea: AI can invent technology itself.",
+      "Examples:\n• software\n• research\n• robotics\n• materials"
     ]
   },
   {
     id: 10,
-    title: "LLM vs AI Agent",
-    icon: 'Layers',
-    layout: 'split',
+    title: "Example",
+    icon: 'Microscope',
+    layout: 'bullets',
     points: [
-      "LLM (Assistant): 'Summarize this PDF I uploaded.' (Passive, single-step response).",
-      "Agent (Worker): 'Monitor SEC.gov for new 10-Ks from Apple, summarize the risks section, and email my team.' (Autonomous, multi-step, action-oriented)."
+      "AI designing:\n• drugs\n• chips\n• code",
+      "AI accelerates every innovation."
     ]
   },
   {
     id: 11,
-    title: "Agent Outsourcing",
-    subtitle: "The Future of Org Structures",
-    icon: 'Users',
-    layout: 'bullets',
+    title: "From Tools → Agents",
+    icon: 'Bot',
+    layout: 'split',
     points: [
-      "Delegating complete workflows to AI agents rather than human contractors or entry-level analysts.",
-      "24/7 Availability without fatigue or time zones.",
-      "Instant scalability during high-volume periods (e.g., earnings season)."
+      "Old world:\n\nUse tools.",
+      "New world:\n\nDelegate tasks to agents."
     ]
   },
   {
     id: 12,
-    title: "[LIVE DEMO]",
-    subtitle: "LLM Prompting vs Autonomous Agent Execution",
-    icon: 'Terminal',
-    layout: 'title',
-    points: ["Switching to browser visualization"]
-  },
-
-  // 13-18: Finance Case Studies
-  {
-    id: 13,
-    title: "The Impact on Financial Tasks (%)",
-    icon: 'Users',
-    layout: 'stacked-bar-chart',
-    chartConfig: {
-      value1Name: "Replaceable %",
-      value2Name: "Augmented %"
-    },
-    chartData: [
-      { name: 'Data Entry', value1: 70, value2: 30 },
-      { name: 'Compliance Checks', value1: 50, value2: 50 },
-      { name: 'Basic Reporting', value1: 40, value2: 60 },
-      { name: 'Financial Modeling', value1: 20, value2: 80 },
-      { name: 'M&A Research', value1: 15, value2: 85 },
-      { name: 'Strategic C-Suite', value1: 5, value2: 95 }
+    title: "Perplexity Computer",
+    icon: 'Search',
+    layout: 'bullets',
+    points: [
+      "Perplexity is building a system that:\n• researches topics\n• builds apps\n• analyzes competitors\n• generates reports",
+      "Search that takes action."
     ]
   },
   {
-    id: 14,
-    title: "AI in Finance: Fraud Detection",
-    icon: 'ShieldCheck',
+    id: 13,
+    title: "Example Workflow: Track Competitors",
+    subtitle: "Perplexity",
+    icon: 'GitMerge',
     layout: 'bullets',
     points: [
-      "Real-Time Detection: Analyzing thousands of transaction parameters in milliseconds.",
-      "Dynamic Learning: ML models adjust continually to evolving fraud typologies.",
-      "Reduced False Positives: Preserving client trust by minimizing locked accounts."
+      "1. Research competitors",
+      "2. Analyze pricing",
+      "3. Generate report",
+      "Fully automated."
+    ],
+    extraContent: { imagePlaceholder: "Screenshot: Perplexity Competitor Research" }
+  },
+  {
+    id: 14,
+    title: "Kimi K2.5",
+    icon: 'Layers',
+    layout: 'bullets',
+    points: [
+      "Moonshot AI model.",
+      "100 agents working in parallel.",
+      "Meaning: Multiple AI workers solving tasks simultaneously."
     ]
   },
   {
     id: 15,
-    title: "Enterprise Use Case: Operations",
-    icon: 'Building2',
-    layout: 'split',
+    title: "Groq AI Agent Debate",
+    icon: 'MessageSquare',
+    layout: 'bullets',
     points: [
-      "JPMorgan Chase ('COIN'): Reviews commercial loan agreements. 360,000 human hours eliminated annually.",
-      "BlackRock ('Aladdin'): Massive scale portfolio management and risk analysis powering trillions in assets."
+      "Agents debating each other.",
+      "Used to improve reasoning and decision-making."
     ]
   },
   {
     id: 16,
-    title: "Enterprise Use Case: Compliance",
-    icon: 'Building2',
-    layout: 'split',
+    title: "Google AI Ecosystem",
+    icon: 'Globe',
+    layout: 'bullets',
     points: [
-      "American Express: Processes millions of daily transactions finding fraud with 95%+ accuracy. ($200M+ savings)",
-      "HSBC: AI Anti-Money Laundering (AML) reduced false positive alerts by 50%."
+      "Tools emerging:\n• Gemini\n• Flow\n• Imagen 4\n• Lyria\n• Jules\n• Project Marina"
     ]
   },
   {
     id: 17,
-    title: "Enterprise Use Case: Trading",
-    icon: 'Building2',
-    layout: 'split',
+    title: "Google Flow",
+    icon: 'PenTool',
+    layout: 'bullets',
     points: [
-      "Goldman Sachs: Augmented algorithmic trading floors; 40% improvement in operational efficiency.",
-      "Citigroup: Predictive AI risk modeling across 200+ countries to hedge geopolitical volatility."
+      "AI creative studio.",
+      "Create:\n• videos\n• images\n• scenes",
+      "Using prompts."
     ]
   },
   {
     id: 18,
-    title: "[LIVE DEMO]",
-    subtitle: "Complex Financial Data Extraction",
-    icon: 'Database',
-    layout: 'title',
-    points: ["Parsing unstructured financial documents"]
-  },
-
-  // 19-26: Practical Implementation & Prompting
-  {
-    id: 19,
-    title: "The Professional AI Toolkit",
-    icon: 'Briefcase',
+    title: "Flow Workflow",
+    icon: 'FastForward',
     layout: 'bullets',
     points: [
-      "ChatGPT (OpenAI): Best general reasoning, strongest data analysis tools (Code Interpreter).",
-      "Claude 3.5 (Anthropic): Best for massive context windows, dense financial document analysis, and natural tone.",
-      "Perplexity: Best for real-time internet research and cited financial news gathering."
+      "Prompt",
+      "→ generate scene",
+      "→ refine",
+      "→ export video."
+    ],
+    extraContent: { imagePlaceholder: "Screenshot: Google Flow Interface" }
+  },
+  {
+    id: 19,
+    title: "Imagen 4",
+    icon: 'Image',
+    layout: 'bullets',
+    points: [
+      "Advanced AI image model.",
+      "Used for:\n• marketing\n• concept design\n• branding."
     ]
   },
   {
     id: 20,
-    title: "The Art of Prompt Engineering",
-    subtitle: "From vague requests to precise commands",
-    icon: 'Terminal',
-    layout: 'split',
+    title: "Lyria AI",
+    icon: 'Music',
+    layout: 'bullets',
     points: [
-      "Amateur Prompt: 'Summarize TSLA earnings.' (Yields generic, unhelpful bullet points).",
-      "Pro Prompt: 'Act as a senior equity analyst. Extract the top 3 margin risks from TSLA's Q3 call and format as a markdown table.'"
+      "Music generation AI.",
+      "Prompt example: \"Create cinematic orchestral music.\"",
+      "AI produces full soundtrack."
     ]
   },
   {
     id: 21,
-    title: "The R.C.T.F Framework",
-    icon: 'Terminal',
+    title: "Jules (Google)",
+    icon: 'Code',
     layout: 'bullets',
     points: [
-      "Role: Define the persona ('You are a strict compliance auditor...').",
-      "Context: Provide the backdrop ('We are evaluating a Series B SaaS startup...').",
-      "Task: The specific action ('Identify discrepancies in ARR growth...').",
-      "Format: The output structure ('Present findings in bullet points max 20 words each')."
+      "AI coding assistant.",
+      "Can generate:\n• applications\n• backend logic\n• APIs."
     ]
   },
   {
     id: 22,
-    title: "Prompting: Chain of Thought",
-    icon: 'BrainCircuit',
+    title: "Project Marina",
+    icon: 'Network',
     layout: 'bullets',
     points: [
-      "Asking the AI to explain its internal reasoning before giving the final answer.",
-      "Add: 'Let's think through this step-by-step.'",
-      "Crucial for financial math or complex logic—forces the LLM to 'show its work', reducing calculation errors."
+      "Experimental AI system.",
+      "AI performing autonomous internet tasks.",
+      "Example: Research → decision → action."
     ]
   },
   {
     id: 23,
-    title: "Prompting: Few-Shot Learning",
-    icon: 'Terminal',
+    title: "AI Video Tools",
+    icon: 'Video',
     layout: 'bullets',
     points: [
-      "Providing specific examples of input/output pairs within the prompt.",
-      "Example: 'Input: Invoice A -> Output: Expense Category Operations. Input: Invoice B -> Output: ?'",
-      "Perfect for standardizing categorization of massive ledgers or transaction lists."
+      "• Runway",
+      "• Sora",
+      "• Flow"
     ]
   },
   {
     id: 24,
-    title: "[LIVE DEMO]",
-    subtitle: "Building the Perfect Financial Prompt",
-    icon: 'Terminal',
-    layout: 'title',
-    points: ["Iterating a prompt from zero to expert"]
+    title: "AI Music Tools",
+    icon: 'Headphones',
+    layout: 'bullets',
+    points: [
+      "• Lyria",
+      "• Suno",
+      "• Udio"
+    ]
   },
   {
     id: 25,
-    title: "Workflow Automation",
-    subtitle: "Connecting the pieces",
-    icon: 'Cpu',
+    title: "AI Image Tools",
+    icon: 'Image',
     layout: 'bullets',
     points: [
-      "The real power unlocks when you connect LLMs to existing software (Slack, Excel, Salesforce).",
-      "No-code tools like Zapier or Make allow you to build automated AI pipelines without coding.",
-      "Process: Trigger -> Extract Data -> LLM Processing -> Action."
+      "• Midjourney",
+      "• Imagen",
+      "• Leonardo"
     ]
   },
   {
     id: 26,
-    title: "Example: The Earnings Monitor Pipeline",
-    icon: 'Clock',
-    layout: 'split',
+    title: "Example Creative Workflow",
+    icon: 'Workflow',
+    layout: 'bullets',
     points: [
-      "1. Trigger: RSS Feed detects new 10-K filing.",
-      "2. Process: Claude API reads the PDF, extracting CapEx and Guidance changes to a JSON format.",
-      "3. Action: Automatically formats a summary alert and posts it to the Senior Analysts Slack channel."
+      "Idea",
+      "→ AI script",
+      "→ AI video",
+      "→ AI music",
+      "→ publish content."
     ]
   },
-
-  // 27-31: Ethics, Risks & Compliance
   {
     id: 27,
-    title: "Ethical & Security Risks",
-    subtitle: "The stakes in finance",
-    icon: 'ShieldCheck',
+    title: "Automation",
+    icon: 'Settings',
     layout: 'quote',
-    points: ["In finance, data privacy and regulatory compliance outweigh efficiency gains. Unsecured AI deployment is a massive liability."]
+    points: [
+      "Automation = AI + APIs + workflows."
+    ]
   },
   {
     id: 28,
-    title: "The Hallucination Problem",
-    icon: 'ShieldCheck',
+    title: "Automation Platforms",
+    icon: 'Server',
     layout: 'bullets',
     points: [
-      "LLMs are statistical predictors, not fact databases. They will 'guess' numbers if they look statistically correct in a sentence.",
-      "Human-in-the-loop (HITL) is mandatory for final review of AI-generated financial models or reports.",
-      "Mitigation: Use Retrieval-Augmented Generation (RAG) to force the AI to cite specific internal documents."
+      "• n8n",
+      "• Zapier",
+      "• Make"
     ]
   },
   {
     id: 29,
-    title: "Data Privacy & Leakage",
-    icon: 'ShieldCheck',
+    title: "n8n Workflow Concept",
+    icon: 'PlayCircle',
     layout: 'bullets',
     points: [
-      "Never paste proprietary financial data, client PII, or internal code into public consumer LLMs (ChatGPT Free).",
-      "Public models use your inputs as training data, creating a massive intellectual property leak risk.",
-      "Solution: Only use Enterprise-tier licenses (Zero Data Retention) or host open-source models (Llama 3) internally."
-    ]
+      "Trigger",
+      "→ Process",
+      "→ Action."
+    ],
+    extraContent: { imagePlaceholder: "Screenshot: n8n Workflow" }
   },
   {
     id: 30,
-    title: "Regulatory Compliance & Bias",
-    icon: 'ShieldCheck',
-    layout: 'split',
+    title: "Finance Automation Example",
+    icon: 'DollarSign',
+    layout: 'bullets',
     points: [
-      "Algorithmic Bias: Credit scoring or lending AIs trained on historical data will replicate historical redlining/biases.",
-      "Explainability: Regulators demand to know *why* a loan was rejected. Deep Learning 'black boxes' complicate compliance."
-    ]
+      "Financial news",
+      "→ AI sentiment analysis",
+      "→ market report."
+    ],
+    extraContent: { imagePlaceholder: "Screenshot: Finance News Automation" }
   },
   {
     id: 31,
-    title: "Responsible Action Steps",
-    icon: 'Sparkles',
+    title: "Earnings Report Automation",
+    icon: 'FileText',
     layout: 'bullets',
     points: [
-      "Establish a strict internal AI Usage Policy for analysts.",
-      "Conduct regular audits on automated trading or credit systems for model drift.",
-      "Invest in 'Red Teaming': Intentionally trying to break or trick your internal AI tools."
-    ]
+      "Upload PDF",
+      "→ AI extracts insights",
+      "→ send analysis."
+    ],
+    extraContent: { imagePlaceholder: "Screenshot: Earnings PDF Automation" }
   },
-
-  // 32-35: Conclusion
   {
     id: 32,
-    title: "The 3 Pillars of AI-Readiness",
-    icon: 'BrainCircuit',
+    title: "Portfolio Automation",
+    icon: 'PieChart',
     layout: 'bullets',
     points: [
-      "1. Technical Fluency: Start using the tools daily. Understand their limits.",
-      "2. Domain Expertise: Your 10+ years of finance knowledge makes you the 'editor'. AI is the 'draftsman'.",
-      "3. Ethical Oversight: Championing security and compliance within your org."
-    ]
+      "Portfolio data",
+      "→ AI analysis",
+      "→ performance report."
+    ],
+    extraContent: { imagePlaceholder: "Screenshot: Portfolio Analysis Automation" }
   },
   {
     id: 33,
-    title: "Transformation, Not Replacement",
-    icon: 'Users',
-    layout: 'split',
+    title: "Invoice Processing",
+    icon: 'FileText',
+    layout: 'bullets',
     points: [
-      "AI will not replace bankers and analysts.",
-      "Bankers and analysts who use AI will replace those who do not.",
-      "The value of complex, human relationship management will actually increase."
-    ]
+      "Invoices",
+      "→ AI extraction",
+      "→ accounting system."
+    ],
+    extraContent: { imagePlaceholder: "Screenshot: Invoice OCR Workflow" }
   },
   {
     id: 34,
-    title: "Q&A",
-    subtitle: "Open Discussion",
-    icon: 'BrainCircuit',
-    layout: 'title',
-    points: ["What are your biggest AI implementation challenges?"]
+    title: "Fraud Monitoring",
+    icon: 'ShieldAlert',
+    layout: 'bullets',
+    points: [
+      "Transactions",
+      "→ anomaly detection",
+      "→ alert system."
+    ],
+    extraContent: { imagePlaceholder: "Screenshot: Fraud Alert Workflow" }
   },
   {
     id: 35,
+    title: "Automated Research",
+    icon: 'Search',
+    layout: 'bullets',
+    points: [
+      "Market data",
+      "→ AI research",
+      "→ investment brief."
+    ],
+    extraContent: { imagePlaceholder: "Screenshot: Market Research Agent" }
+  },
+  {
+    id: 36,
+    title: "Case Study: BlackRock",
+    icon: 'Building',
+    layout: 'bullets',
+    points: [
+      "AI platform Aladdin.",
+      "Runs simulations to analyze market risk."
+    ]
+  },
+  {
+    id: 37,
+    title: "Case Study: JPMorgan",
+    icon: 'Building2',
+    layout: 'bullets',
+    points: [
+      "COiN AI analyzes contracts.",
+      "Saved 360,000 lawyer hours."
+    ]
+  },
+  {
+    id: 38,
+    title: "AI in Customer Support",
+    icon: 'Headphones',
+    layout: 'bullets',
+    points: [
+      "Banks using AI chatbots to handle support instantaneously."
+    ]
+  },
+  {
+    id: 39,
+    title: "AI Workforce Impact",
+    icon: 'TrendingDown',
+    layout: 'bullets',
+    points: [
+      "Some companies reducing teams due to automation.",
+      "Example discussion point: Elon Musk reducing engineering teams using automation."
+    ]
+  },
+  {
+    id: 40,
+    title: "AI Geopolitics",
+    icon: 'Globe',
+    layout: 'bullets',
+    points: [
+      "AI is now geopolitical.",
+      "Countries protecting data."
+    ]
+  },
+  {
+    id: 41,
+    title: "Data Security Risks",
+    icon: 'Shield',
+    layout: 'bullets',
+    points: [
+      "China restricting some AI models due to data security risks."
+    ]
+  },
+  {
+    id: 42,
+    title: "Sovereign AI",
+    icon: 'Flag',
+    layout: 'bullets',
+    points: [
+      "Countries building their own models."
+    ]
+  },
+  {
+    id: 43,
+    title: "India Sovereign AI Examples",
+    icon: 'MapPin',
+    layout: 'bullets',
+    points: [
+      "• Sarvam AI",
+      "• Indus",
+      "• BharatGPT",
+      "• Param 2"
+    ]
+  },
+  {
+    id: 44,
+    title: "AI Infrastructure Race",
+    icon: 'Database',
+    layout: 'bullets',
+    points: [
+      "AI requires infrastructure.",
+      "• GPUs",
+      "• data centers",
+      "• energy"
+    ]
+  },
+  {
+    id: 45,
+    title: "Resource Demand",
+    icon: 'BatteryCharging',
+    layout: 'bullets',
+    points: [
+      "US launching massive investments in lithium.",
+      "Lithium becoming critical for AI infrastructure."
+    ]
+  },
+  {
+    id: 46,
+    title: "Hardware Markets",
+    icon: 'Cpu',
+    layout: 'bullets',
+    points: [
+      "GPU shortages and RAM price increases.",
+      "AI demand driving hardware markets."
+    ]
+  },
+  {
+    id: 47,
+    title: "AI Risks & Safety",
+    icon: 'AlertOctagon',
+    layout: 'bullets',
+    points: [
+      "Anthropic CEO left OpenAI over safety concerns.",
+      "Debate: Innovation vs. safety."
+    ]
+  },
+  {
+    id: 48,
+    title: "The Alignment Problem",
+    icon: 'Crosshair',
+    layout: 'bullets',
+    points: [
+      "AI tries to please users.",
+      "It does not inherently seek truth."
+    ]
+  },
+  {
+    id: 49,
+    title: "Human Supervision",
+    icon: 'Eye',
+    layout: 'quote',
+    points: [
+      "AI must operate with human supervision."
+    ]
+  },
+  {
+    id: 50,
+    title: "Future of Work Predictions",
+    icon: 'TrendingUp',
+    layout: 'bullets',
+    points: [
+      "Many entry-level tasks will be completely automated."
+    ]
+  },
+  {
+    id: 51,
+    title: "If You Don't Use AI",
+    icon: 'XCircle',
+    layout: 'bullets',
+    points: [
+      "You will struggle."
+    ]
+  },
+  {
+    id: 52,
+    title: "If You Rely ONLY On AI",
+    icon: 'XCircle',
+    layout: 'bullets',
+    points: [
+      "You will also struggle."
+    ]
+  },
+  {
+    id: 53,
+    title: "The Winning Formula",
+    icon: 'Trophy',
+    layout: 'quote',
+    points: [
+      "Best professionals = Human + AI collaboration."
+    ]
+  },
+  {
+    id: 54,
+    title: "Interactive Question",
+    icon: 'MessageCircle',
+    layout: 'title',
+    points: [
+      "What workflow in your job could be automated tomorrow?"
+    ]
+  },
+  {
+    id: 55,
+    title: "The AI Shift (Recap)",
+    icon: 'ArrowRight',
+    layout: 'split',
+    points: [
+      "Old world:\n\nLearn tools.",
+      "New world:\n\nDirect systems."
+    ]
+  },
+  {
+    id: 56,
     title: "Thank You",
     subtitle: "The Future is Collaboration",
     icon: 'Sparkles',

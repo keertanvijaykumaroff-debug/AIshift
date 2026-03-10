@@ -236,6 +236,20 @@ export default function Home() {
                     </ResponsiveContainer>
                   </div>
                 )}
+
+                {/* Image Placeholder */}
+                {slide.extraContent?.imagePlaceholder && (
+                  <div className="mt-8 flex-1 w-full min-h-[250px] lg:min-h-[350px] border-2 border-dashed border-indigo-200 bg-indigo-50/50 rounded-2xl flex flex-col items-center justify-center text-indigo-400 group hover:border-indigo-400 hover:bg-indigo-50 transition-colors">
+                    <Icons.Image className="w-12 h-12 mb-4 opacity-50 group-hover:opacity-80 transition-opacity" />
+                    <p className="font-medium text-lg lg:text-xl px-4 text-center">
+                      {slide.extraContent.imagePlaceholder}
+                    </p>
+                    <p className="text-sm mt-2 opacity-70 px-4 text-center">
+                      (Insert screenshot/image here)
+                    </p>
+                  </div>
+                )}
+
                 {/* QR Code Finale */}
                 {slide.layout === 'qr-code' && (
                   <div className="flex flex-col items-center justify-center mt-auto mb-auto gap-8">
