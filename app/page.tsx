@@ -97,14 +97,10 @@ export default function Home() {
               className="w-full h-full snap-start snap-always shrink-0 flex flex-col p-10 sm:p-14 lg:p-20 relative bg-white"
             >
               {/* Corner Logo */}
-              <div className="absolute top-6 left-6 lg:top-8 lg:left-8 opacity-90 z-10 w-24 sm:w-32">
-                <Image
-                  src="/DMKV.png"
-                  alt="DMKV"
-                  width={200}
-                  height={80}
-                  className="object-contain"
-                />
+              <div className="absolute top-6 left-6 lg:top-8 lg:left-8 z-10 select-none">
+                <span className="text-2xl sm:text-3xl font-black text-black tracking-tight">
+                  DMKV
+                </span>
               </div>
 
               {/* Slide Header (Hidden on Title slides) */}
