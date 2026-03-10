@@ -204,7 +204,7 @@ export const slides: SlideContent[] = [
       "→ refine",
       "→ export video."
     ],
-    extraContent: { imagePlaceholder: "Screenshot: Google Flow Interface" }
+    extraContent: { image: "/slide-18-demo.png" }
   },
   {
     id: 19,
