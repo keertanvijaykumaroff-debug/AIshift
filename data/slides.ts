@@ -392,15 +392,16 @@ export const slides: SlideContent[] = [
   },
   {
     id: 35,
-    title: "Automated Research",
+    title: "Automated Research Workflow",
     icon: 'Search',
     layout: 'bullets',
     points: [
-      "Market data",
-      "→ AI research",
-      "→ investment brief."
+      "Data Ingestion & Semantic Analysis",
+      "→ Synthesis & Hypothesis Generation",
+      "→ Final Research Approval",
+      "→ Publication & Alerts."
     ],
-    extraContent: { imagePlaceholder: "Screenshot: Market Research Agent" }
+    extraContent: { image: "/slide-35-demo.png" }
   },
   {
     id: 36,
