@@ -357,11 +357,12 @@ export const slides: SlideContent[] = [
     icon: 'PieChart',
     layout: 'bullets',
     points: [
-      "Portfolio data",
-      "→ AI analysis",
-      "→ performance report."
+      "Ingest Account & Position Data",
+      "→ Risk Assessment & Calculation",
+      "→ Market Consensus Analysis",
+      "→ Fiduciary Report Publication."
     ],
-    extraContent: { imagePlaceholder: "Screenshot: Portfolio Analysis Automation" }
+    extraContent: { image: "/slide-32-demo.png" }
   },
   {
     id: 33,
