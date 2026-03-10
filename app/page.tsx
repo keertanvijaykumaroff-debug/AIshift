@@ -19,9 +19,15 @@ export default function Home() {
 
   const handleScreenClick = () => {
     const currentSlideData = slides[currentSlide - 1];
-    if (currentSlideData?.points && currentSlideData.layout === 'bullets') {
+
+    // Calculate total items to reveal
+    const pointsCount = currentSlideData?.points?.length || 0;
+    const hasExtra = (currentSlideData?.extraContent?.imagePlaceholder || currentSlideData?.extraContent?.qrImage) ? 1 : 0;
+    const totalItems = pointsCount + hasExtra;
+
+    if (totalItems > 0) {
       const currentRevealed = revealedPoints[currentSlideData.id] || 0;
-      if (currentRevealed < currentSlideData.points.length) {
+      if (currentRevealed < totalItems) {
         setRevealedPoints(prev => ({ ...prev, [currentSlideData.id]: currentRevealed + 1 }));
       } else if (currentSlide < slides.length) {
         containerRef.current?.scrollTo({
@@ -133,7 +139,7 @@ export default function Home() {
                       </p>
                     )}
                     {slide.points && slide.points.length > 0 && (
-                      <div className="mt-12 pt-10 border-t-2 border-slate-100 w-full text-center">
+                      <div className={`mt-12 pt-10 border-t-2 border-slate-100 w-full text-center transition-all duration-500 ${(revealedPoints[slide.id] || 0) > 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
                         <p className="text-lg sm:text-xl lg:text-2xl text-slate-500 font-medium tracking-wide">
                           {slide.points[0]}
                         </p>
@@ -164,18 +170,21 @@ export default function Home() {
 
                 {slide.layout === 'split' && slide.points && (
                   <div className="grid md:grid-cols-2 gap-8 lg:gap-12 w-full max-w-6xl">
-                    {slide.points.map((point, i) => (
-                      <div key={i} className="bg-slate-50 p-8 lg:p-10 rounded-2xl border border-slate-100 h-full flex items-center shadow-sm hover:shadow-md transition-shadow">
-                        <p className="text-2xl lg:text-[2rem] text-slate-700 leading-tight font-medium">
-                          {point}
-                        </p>
-                      </div>
-                    ))}
+                    {slide.points.map((point, i) => {
+                      const isVisible = i < (revealedPoints[slide.id] || 0);
+                      return (
+                        <div key={i} className={`bg-slate-50 p-8 lg:p-10 rounded-2xl border border-slate-100 h-full flex items-center shadow-sm transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
+                          <p className="text-2xl lg:text-[2rem] text-slate-700 leading-tight font-medium">
+                            {point}
+                          </p>
+                        </div>
+                      )
+                    })}
                   </div>
                 )}
 
                 {slide.layout === 'quote' && slide.points && (
-                  <div className="bg-indigo-50/50 p-10 lg:p-16 rounded-3xl border-l-[6px] border-indigo-500 max-w-5xl shadow-sm">
+                  <div className={`bg-indigo-50/50 p-10 lg:p-16 rounded-3xl border-l-[6px] border-indigo-500 max-w-5xl shadow-sm transition-all duration-500 ${(revealedPoints[slide.id] || 0) > 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
                     <p className="text-3xl lg:text-[2.5rem] text-slate-800 leading-snug italic font-serif">
                       "{slide.points[0]}"
                     </p>
@@ -265,7 +274,8 @@ export default function Home() {
 
                 {/* Image Placeholder */}
                 {slide.extraContent?.imagePlaceholder && (
-                  <div className="mt-8 flex-1 w-full min-h-[250px] lg:min-h-[350px] border-2 border-dashed border-indigo-200 bg-indigo-50/50 rounded-2xl flex flex-col items-center justify-center text-indigo-400 group hover:border-indigo-400 hover:bg-indigo-50 transition-colors">
+                  <div className={`mt-8 flex-1 w-full min-h-[250px] lg:min-h-[350px] border-2 border-dashed border-indigo-200 bg-indigo-50/50 rounded-2xl flex flex-col items-center justify-center text-indigo-400 group hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-500 ${(revealedPoints[slide.id] || 0) > (slide.points?.length || 0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+                    }`}>
                     <Icons.Image className="w-12 h-12 mb-4 opacity-50 group-hover:opacity-80 transition-opacity" />
                     <p className="font-medium text-lg lg:text-xl px-4 text-center">
                       {slide.extraContent.imagePlaceholder}
@@ -280,12 +290,13 @@ export default function Home() {
                 {slide.layout === 'qr-code' && (
                   <div className="flex flex-col items-center justify-center mt-auto mb-auto gap-8">
                     {slide.points && slide.points.length > 0 && (
-                      <p className="text-xl sm:text-2xl lg:text-3xl text-slate-500 font-medium text-center max-w-2xl">
+                      <p className={`text-xl sm:text-2xl lg:text-3xl text-slate-500 font-medium text-center max-w-2xl transition-all duration-500 ${(revealedPoints[slide.id] || 0) > 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
                         {slide.points[0]}
                       </p>
                     )}
                     {slide.extraContent?.qrImage && (
-                      <div className="bg-white p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 flex flex-col items-center group">
+                      <div className={`bg-white p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 flex flex-col items-center group transition-all duration-500 ${(revealedPoints[slide.id] || 0) > (slide.points?.length || 0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+                        }`}>
                         <Image
                           src={slide.extraContent.qrImage}
                           alt={slide.extraContent.qrAlt || "QR Code"}
