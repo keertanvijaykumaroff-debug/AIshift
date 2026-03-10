@@ -370,23 +370,25 @@ export const slides: SlideContent[] = [
     icon: 'FileText',
     layout: 'bullets',
     points: [
-      "Invoices",
-      "→ AI extraction",
-      "→ accounting system."
+      "Email Ingestion / Direct Web Upload",
+      "→ OCR & Data Extraction",
+      "→ AI-Powered Validation",
+      "→ ERP / Accounting Posting."
     ],
-    extraContent: { imagePlaceholder: "Screenshot: Invoice OCR Workflow" }
+    extraContent: { image: "/slide-33-demo.png" }
   },
   {
     id: 34,
-    title: "Fraud Monitoring",
-    icon: 'ShieldAlert',
+    title: "Fraud Monitoring Workflow",
+    icon: 'Shield',
     layout: 'bullets',
     points: [
-      "Transactions",
-      "→ anomaly detection",
-      "→ alert system."
+      "Ingest Transaction Data",
+      "→ Risk Scoring & AI Validation",
+      "→ Human Investigation Brief",
+      "→ Automated Decline/Alerts."
     ],
-    extraContent: { imagePlaceholder: "Screenshot: Fraud Alert Workflow" }
+    extraContent: { image: "/slide-34-demo.png" }
   },
   {
     id: 35,
