@@ -165,7 +165,7 @@ export const slides: SlideContent[] = [
   },
   {
     id: 15,
-    title: "Groq AI Agent Debate",
+    title: "Grok AI Agent Debate",
     icon: 'MessageSquare',
     layout: 'bullets',
     points: [
